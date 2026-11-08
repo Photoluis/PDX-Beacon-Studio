@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import studio_core as core  # noqa: E402
 
 APP_NAME = "PDX Beacon Studio"
-APP_VERSION = "0.1.0-pre"
+APP_VERSION = "0.1.1-pre"
 ACCENT = "#36c2ff"
 WORK = Path(tempfile.gettempdir()) / "pdx_beacon_studio"
 
@@ -72,11 +72,22 @@ class _Signals(QObject):
 
 
 class Job(QRunnable):
-    """esegue fn(log, progress) fuori dall'interfaccia; i risultati tornano con i segnali"""
+    """esegue fn(log, progress) fuori dall'interfaccia; i risultati tornano con i segnali.
+
+    Il lavoro resta in vita (Job._live) finché l'esito non è stato consegnato: altrimenti, finita run(), l'oggetto
+    dei segnali veniva distrutto e le funzioni lambda collegate a done/error non venivano mai chiamate."""
+    _live: set = set()
 
     def __init__(self, fn):
         super().__init__()
         self.fn, self.s = fn, _Signals()
+        self.setAutoDelete(False)
+        Job._live.add(self)
+        self.s.done.connect(self._release)
+        self.s.error.connect(self._release)
+
+    def _release(self, *_):
+        QTimer.singleShot(0, lambda: Job._live.discard(self))     # dopo le altre consegne dello stesso esito
 
     def run(self):
         try:

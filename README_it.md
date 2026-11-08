@@ -1,6 +1,6 @@
 # PDX Beacon Studio
 
-**Pre-release 0.1.0** · App per Windows per l'[ESP32-S3-CAM_PDX DATV Beacon](https://github.com/Photoluis/Esp32s3-cam-pdx-datv-beacon)
+**Pre-release 0.1.1** · App per Windows per l'[ESP32-S3-CAM_PDX DATV Beacon](https://github.com/Photoluis/Esp32s3-cam-pdx-datv-beacon)
 · di IZ7PDX · GPL-3.0 · [English](README.md)
 
 Trasforma qualsiasi video o immagine in un monoscopio `.bin` per il beacon e lo carica sulla scheda, senza riga di
@@ -33,7 +33,7 @@ comando.
 
 ## Scaricare e avviare
 
-1. Scaricare `PDX_Beacon_Studio_v0.1.0-pre_Windows.zip` dalle [Release](../../releases).
+1. Scaricare `PDX_Beacon_Studio_v0.1.1-pre_Windows.zip` dalle [Release](../../releases).
 2. Scompattarlo dove si vuole e avviare `PDX_Beacon_Studio.exe`. ffmpeg è incluso: non serve installare altro.
 
 Windows può avvisare che l'editore è sconosciuto (l'app non è firmata): *Ulteriori informazioni → Esegui comunque*.
@@ -48,7 +48,7 @@ python -m venv .venv
 ```
 
 Serve ffmpeg con libx265 nel PATH (es. `winget install Gyan.FFmpeg`).
-Prova del nucleo senza scheda: `.venv\Scripts\python studio\test_studio_core.py`.
+Prove senza scheda: `.venv\Scripts\python studio\test_studio_core.py` e `studio\test_gui.py`.
 Pacchetto: `powershell -ExecutionPolicy Bypass -File build_exe.ps1`.
 
 ## File

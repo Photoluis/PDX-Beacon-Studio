@@ -1,6 +1,6 @@
 # PDX Beacon Studio
 
-**Pre-release 0.1.0** · Windows app for the [ESP32-S3-CAM_PDX DATV Beacon](https://github.com/Photoluis/Esp32s3-cam-pdx-datv-beacon)
+**Pre-release 0.1.1** · Windows app for the [ESP32-S3-CAM_PDX DATV Beacon](https://github.com/Photoluis/Esp32s3-cam-pdx-datv-beacon)
 · by IZ7PDX · GPL-3.0 · [Italiano](README_it.md)
 
 Turn any video or picture into a monoscope `.bin` for the beacon and upload it, without the command line.
@@ -33,7 +33,7 @@ Turn any video or picture into a monoscope `.bin` for the beacon and upload it, 
 
 ## Download and run
 
-1. Download `PDX_Beacon_Studio_v0.1.0-pre_Windows.zip` from the [Releases](../../releases).
+1. Download `PDX_Beacon_Studio_v0.1.1-pre_Windows.zip` from the [Releases](../../releases).
 2. Unzip it anywhere and run `PDX_Beacon_Studio.exe`. ffmpeg is included; nothing else to install.
 
 Windows may warn that the app is from an unknown publisher (it is not code-signed): *More info → Run anyway*.
@@ -48,7 +48,7 @@ python -m venv .venv
 ```
 
 ffmpeg with libx265 is needed on the PATH (e.g. `winget install Gyan.FFmpeg`).
-Core test without a board: `.venv\Scripts\python studio\test_studio_core.py`.
+Tests without a board: `.venv\Scripts\python studio\test_studio_core.py` and `studio\test_gui.py`.
 Build the package: `powershell -ExecutionPolicy Bypass -File build_exe.ps1`.
 
 ## Files

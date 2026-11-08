@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.1-pre — 2026-11-08
+
+**Fix — please update from 0.1.0-pre.**
+- In 0.1.0-pre the results of background jobs were lost when the slot was a lambda: in the *Carica sul beacon* tab
+  "Leggi lo stato della scheda", upload and erase never completed and the buttons stayed disabled (the monoscope tab
+  was not affected). Jobs are now kept alive until their result is delivered.
+- New interface test `tools/studio/test_gui.py` (offscreen): 50/50 results delivered (0/50 with 0.1.0-pre), monoscope
+  created from the button.
+- Verified with the GUI on beacon firmware v1.2.0 via USB: board status read, upload confirmation naming the file on
+  the board.
+
 ## 0.1.0-pre — 2026-11-07
 
 First pre-release.
